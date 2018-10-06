@@ -1,0 +1,10 @@
+Int a ;
+Int b ;
+Float c ;
+Float e ;
+Begin
+print a = 5 ;
+If a = b  
+then print a = b
+else print a = b 
+end

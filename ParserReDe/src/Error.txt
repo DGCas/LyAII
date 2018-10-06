@@ -1,0 +1,12 @@
+Int  ;
+Int b ;
+Int c ;
+Int d ;
+Float e ;
+Float f ;
+Begin
+print a = c ;
+If a = b  
+then print a = b
+else print a = b 
+end
