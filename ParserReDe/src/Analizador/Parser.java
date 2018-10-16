@@ -42,7 +42,7 @@ public class Parser {
              
 		Declarations();
 		Statements();
-                ImprimeArbol();
+                //ImprimeArbol();
                 System.out.println("Exito!\n");
 		AnalizadorSemantico a = new AnalizadorSemantico(declaraciones, statements);
 	}

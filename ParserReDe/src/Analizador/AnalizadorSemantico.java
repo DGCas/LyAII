@@ -43,13 +43,13 @@ public class AnalizadorSemantico {
 		while(k.hasMoreElements()){
 			//Toma el siguiente y lo almacena
 			key = k.nextElement();
-			System.out.println(key + "   "+ simbolos.get(key));
+			System.out.println(key + "   "+ simbolos.get(key)+ "   ");
 		}
 		//Imprime el codigo intermedio
-		System.out.println("\nCODIGO INTERMEDIO EN CUADRUPLES.");
+		/*System.out.println("\nCODIGO INTERMEDIO EN CUADRUPLES.");
 		for(String c: intermedio){
 			System.out.println(c);
-		}
+		}*/
              
 
 	}
