@@ -98,13 +98,16 @@ public class Parser {
 			Avanza();
 			String identifier = token;
 			Come(Id);
-			Come(Semi);
+			Come(Semi);				
+
+			//Come(Id);
 			//Agrega a la lista de declaraciones una nueva declaraci�n.
 			declarations.add(new Declaration(new Type(type),new Identifier (identifier)));
 			declaracion = new DefaultMutableTreeNode(type);
 			//declaracion.add(new DefaultMutableTreeNode("->" + identifier));
 			declaracion.add(new DefaultMutableTreeNode(identifier));
 			declaraciones.add(declaracion);
+			Come(Id);
 			Declarations();
 		}
 	}

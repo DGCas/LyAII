@@ -13,7 +13,7 @@ public class AnalizadorSemantico {
 	Hashtable<String,String> simbolos;
 	//Listas que sirven para los saltos del codigo intermedio
 	LinkedList<String> intermedio;
-        int linea, auxiliar, salto, salto2, instruc;
+        int numLineatabla=1,linea, auxiliar, salto, salto2, instruc;
 	//toma la posicion del ultimo condicional para poder poner el salto correcto.
         	//Sirve para saber cual es el numero de la instruccion.
 	
@@ -33,7 +33,6 @@ public class AnalizadorSemantico {
 		Declaraciones();
 		//Statutos();
                 TransformarEstatutos();
-                System.out.println("----TABLA DE SIMBOLOS.----");
 		//Transforma todas las keys de una hashtable a enumeration de tipo string.
 		Enumeration<String> k = simbolos.keys();
 		String key;
@@ -41,7 +40,7 @@ public class AnalizadorSemantico {
 		while(k.hasMoreElements()){
 			//Toma el siguiente y lo almacena
 			key = k.nextElement();
-			System.out.println(key + "   "+ simbolos.get(key)+ "   ");
+			//System.out.println(key + "   "+ simbolos.get(key)+ "   ");
 		}
 		//Imprime el codigo intermedio
 		/*System.out.println("\nCODIGO INTERMEDIO EN CUADRUPLES.");
@@ -61,13 +60,15 @@ public class AnalizadorSemantico {
 		DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) arbol.getModel().getRoot();
 		//Crea una enumeration para obtener los valores o nodos del arbol
 		Enumeration < ? > e = raiz.preorderEnumeration();
-		String tipo, ident;
+		String tipo, ident, tipo1, tipo2;
 		//El primer elemento esta vacio
 		e.nextElement();
 		//Recorre el arbol mientras existan elementos, de dos en dos ya que tiene el tipo y el identificador.
+        System.out.println("----TABLA DE SIMBOLOS.----");
 		while(e.hasMoreElements()){
 			tipo = e.nextElement().toString();
-			ident = e.nextElement().toString();
+			ident = e.nextElement().toString();	
+			System.out.println(tipo+ "   "+ident+ "   "+numLineatabla++);
 			//A�ade el tipo y el identificador a una hashtable para busqueda mas rapida.
 			if(simbolos.get(ident) != null)
 				throw new SemanticError("Error Semantico:  '" +ident + "' es una variable ya declarada previamente " );

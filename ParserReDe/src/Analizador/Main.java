@@ -11,13 +11,13 @@ public class Main {
 	Parser p;
 	//Crea un lista de listas de strings para almacenar los tokens.
 	LinkedList<LinkedList<String>> tokens;
-	
+	int numLinea=0;
 	public Main()throws UnexpectedTokenException, SemanticError{
 		//inicializa la lista.
 		tokens = new LinkedList<LinkedList<String>>();
 		try {
 			//Llama al método para que lea el archivo y lo parta en tokens.
-			LeerArchivo("C:\\Users\\JesusAlfredo\\Downloads\\automatas\\LyAII-master\\ParserReDe\\bin\\Correcto.txt");
+			LeerArchivo("C:\\Users\\danie\\eclipse-workspace\\ParserReDe\\src\\Error2.txt");
                         
                         
                         
@@ -25,6 +25,7 @@ public class Main {
 		catch (IOException e) {e.printStackTrace();}
 		//Crea un nuevo objeto de tipo parser y comienza a hacer las operaciones.
 		p = new Parser(tokens);
+		System.out.println(tokens);
 		p.ComenzarParser();
                 
 	}
@@ -42,14 +43,14 @@ public class Main {
 		//Lee linea por linea.
 		while((cad = b.readLine()) !=null){
 			//llama al metodo que lo convierte en tokenizer.
-			Tokenizar(cad);
-			
+			Tokenizar(cad);	
 		}
 		//Cierra el buffer de lectura.
 		b.close();
 	}
 	
 	public void Tokenizar(String cad){
+		numLinea++;
 		//lista provisional donde se almacenan los tokens por linea
 		LinkedList<String> l = new LinkedList<String> ();
 		//Parte en tokens la cadena que llega.
@@ -58,8 +59,11 @@ public class Main {
 		while(t.hasMoreTokens()){
 			l.add(t.nextToken());
 		}
+		l.add(numLinea+"");
 		//Agrega la lista de tokens a la lista de listas.
 		tokens.add(l);
+		
+		
                    
 	}
 }
