@@ -155,7 +155,7 @@ public class Parser {
 			default:
 				if(token == null)
 					return null;
-				throw new UnexpectedTokenException("Token inesperado en la linea "+ noLinea + ".\nToken encontrado: " + tokenCode);
+				throw new UnexpectedTokenException("Token inesperado en la linea "+ noLinea + ".\nToken encontrado: " + tokenCode + " Asignación invalida/Variable no definida");
 		}
 		return null;
 	}

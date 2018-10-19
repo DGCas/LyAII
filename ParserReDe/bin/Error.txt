@@ -1,11 +1,12 @@
-Int a ;
+Int  ;
 Int b ;
-Float c ;
+Int c ;
+Int d ;
 Float e ;
-f = 2.0 ;
+Float f ;
 Begin
-print a = 5 ;
-If a - e  
+print a = c ;
+If a = b  
 then print a = b
 else print a = b 
 end

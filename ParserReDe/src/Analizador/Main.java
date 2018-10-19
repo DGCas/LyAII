@@ -17,7 +17,7 @@ public class Main {
 		tokens = new LinkedList<LinkedList<String>>();
 		try {
 			//Llama al método para que lea el archivo y lo parta en tokens.
-			LeerArchivo("C:\\Users\\danie\\eclipse-workspace\\ParserReDe\\src\\Correcto.txt");
+			LeerArchivo("C:\\Users\\JesusAlfredo\\Downloads\\automatas\\LyAII-master\\ParserReDe\\bin\\Correcto.txt");
                         
                         
                         
@@ -43,6 +43,7 @@ public class Main {
 		while((cad = b.readLine()) !=null){
 			//llama al metodo que lo convierte en tokenizer.
 			Tokenizar(cad);
+			
 		}
 		//Cierra el buffer de lectura.
 		b.close();

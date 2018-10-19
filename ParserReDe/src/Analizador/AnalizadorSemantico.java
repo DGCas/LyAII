@@ -24,11 +24,9 @@ public class AnalizadorSemantico {
 		this.declaraciones = declaraciones;
 		this.estatutos = estatutos;
 		linea = 1;
-		intermedio = new LinkedList<String>();
-
 		
-               
-                auxiliar = 1;
+		intermedio = new LinkedList<String>();
+		auxiliar = 1;
 		
 		//Crea una hashtable para que sea la tabla de simbolos.
 		simbolos = new Hashtable<String, String>();
@@ -72,7 +70,7 @@ public class AnalizadorSemantico {
 			ident = e.nextElement().toString();
 			//Aï¿½ade el tipo y el identificador a una hashtable para busqueda mas rapida.
 			if(simbolos.get(ident) != null)
-				throw new SemanticError("Error Semantico:  '" +ident + "' ya existe");
+				throw new SemanticError("Error Semantico:  '" +ident + "' es una variable ya declarada previamente " );
 			simbolos.put(ident, tipo);
 		}
                // System.out.println("aqui esta la tabla"+simbolos);
@@ -134,7 +132,7 @@ public class AnalizadorSemantico {
 					//Si entra aqui es que no existe y pregunta si es numero, si lo es asigna un int a tipo1
 					try{Integer.parseInt(val1);tipo1 = "Int";}
 					//Si no puede parsear a entero tira una exepcion.
-					catch(Exception err){throw new SemanticError("--Error Semantico--  "+ val1 +" no existe");}
+					catch(Exception err){throw new SemanticError("--Error Semantico--  "+ val1 +" no existe, operación no puede completarse");}
 				}
 				//Toma el segundo tipo
 				tipo2 = simbolos.get(val2);
@@ -142,11 +140,11 @@ public class AnalizadorSemantico {
 					//Si entra aqui es que no existe y pregunta si es numero, si lo es asigna un int a tipo2
 					try{Integer.parseInt(val2);tipo2 = "Int";}
 					//Si no puede parsear a entero tira una exepcion.
-					catch(Exception err){throw new SemanticError("--Error semantico-- "+ val2 + " no existe");}
+					catch(Exception err){throw new SemanticError("--Error semantico-- "+ val2 + " no existe, imposible completar operación");}
 				}
 				//Si los tipos no son iguales tira una exepcion.
 				if(!tipo1.equals(tipo2)){
-					throw new SemanticError("--Error semantico-- un tipo "+ tipo2 + " no puede ser transformado a "+tipo1);
+					throw new SemanticError("--Error semantico--  Operacion invalida entre tipos: "+ tipo1 + tipo2);
 				}
 				//AÃ±ade una instruccion cuadruplo de impresion.
 				intermedio.add(linea+"\tPRINT\t\t\t"+val1+aux+val2);
@@ -178,7 +176,7 @@ public class AnalizadorSemantico {
 				}
 				//Si los tipos no son iguales tira una exepcion.
 				if(!tipo1.equals(tipo2)){
-					throw new SemanticError("--Error semantico-- un tipo "+ tipo2 + " no puede ser transformado a "+tipo1);
+					throw new SemanticError("--Error semantico-- Operacion invalida entre tipos: "+tipo1 +"-"+ tipo2);
 				}
 				//AÃ±ade un instruccion al intermedio como resta.
 				intermedio.add(linea+ "\t-\t"+val1+"\t"+val2+"\tt"+auxiliar);
